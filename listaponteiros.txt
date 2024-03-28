@@ -1,0 +1,687 @@
+Nome: Pablo Arthur Paraguai Lima Filho
+Matricula: 20200130595
+
+Questao 1:
+
+  p == &i :retorna true, pois, "p" possui o endereço de "i"; 
+  
+  *p - *q :retorna a subtração do inteiro para o qual ponteiro "p" aponta com o que "q" aponta, neste caso 3-5 = -2;
+  
+  **&p :retorna o valor de "p" que é 3, pois, *&p retorna o endereço no qual "p" aponta, logo, adicionando mais um *, teremos o valor para o qual *&p aponta;
+  
+  3-*p/(*q)+7 :retorna 10, pois, a divisão de *p/*q resulta em 0, devido ao tipo de variavel que é um int, prevelecendo a unica parte inteira da divisão que é o 0, logo, 3-0+7 = 10; 
+
+--------------------------
+Questao 2:
+
+  p: irá imprimir o local(em hexadecimal) em que "i" se encontra na memoria, como o exemplo deu um valor decimal teremos na saida 4094;
+
+  p+1: irá imprimir 4096, que será a posição de um int deslocado, que nesse caso é de 2 bytes posteriores do endereço de "p";
+
+  *p+2: irá imprimir 5+2 = 7;
+
+  **&p: irá imprimir o valor no qual o ponteiro "p" aponta, nesse caso, 5;
+
+  3**p: irá imprimir a multiplicação de 3 com o valor no qual "p" aponta, nesse caso, 3*5 = 15;
+
+  **&p+4: irá imprimir a soma do valor no qual o ponteiro "p" aponta e o 4, nesse caso, 5+4 = 9; 
+
+--------------------------
+Questao 3:
+
+  *q = &j: é uma incompatibilidade, pois, não pode ser armazenado um endereço em uma variavel do tipo int;
+  
+  i = (*&)j: é invalida, pois, *& não possui uma variavel atrelada para que possa ser feita a referenciação, e além disso não é permitida a atribuição do valor de um ponteiro em uma variavel do tipo inteiro;
+  
+  q = *p: "q" é um pointeiro para inteiro e *p é um inteiro, logo essa atribuição não pode ser feita;
+
+  i = (*p)++ + *q: o ponteiro "q" não aponta para nenhuma posição de memoria valida diante o trexo disponibilizado, essa expressão seria valida se, por exemplo ela estivesse apontada para a posição de j. 
+
+  OBS: Algumas das expressões "validas" não apresentam o comportamento esperado. 
+
+--------------------------
+Questao 4:
+
+  A : *p1 = 20, atribuiu 20 na variavel "valor", pois p1 aponta para o endereço de "valor", logo o resultado foi o esperado;
+
+  B : *p2 = 29.0, atribuiu 29.0 na variavel "temp", como "p2" é um ponteiro para float e "temp" é um float o resultado saiu como o esperado;
+
+  C : p3 recebe o endereço da posição 0 do char "nome", e "aux" recebe o valor para onde p3 aponta, logo imprimindo "P" que era o esperado; 
+
+  D : p3 recebe o endereço da posição 4 do char "nome", e "aux" recebe o valor para onde p3 aponta, logo imprimindo "e" que era o esperado;
+
+  E : *p3 irá imprimir o primeiro valor do char "nome", que será "P", pois o ponteiro aponta para a posição do primeiro caractere. Talvez nesse caso o objetivo fosse imprimir o "nome" por completo, o que não aconteceu; 
+
+  F : irá imprimir a letra "e", pois foi atribuido a p3 o antigo valor dele deslocado de 4 char's, o que faz p3 apontar para a posição [4] do "nome";  
+
+  G : irá imprimir a letra "t", pois foi decrementado uma posição, fazendo o p3 apontar para a posição [3] do "nome";
+
+  H : irá imprimir 31, pois o p4 irá apontar para a posição vetor[0];
+
+  I : irá imprimir 45, pois foi realizado um incremento da posição p4, fazendo assim p5 apontar para vetor[1];
+
+  J : irá imprimir 27, pois foi realizado um incremento da posição p5, fazendo assim p4 apontar para vetor[2];
+
+  L : irá imprimir 31, pois foi decrementado 2 posições de p4, fazendo ele apontar para vetor[0];
+
+  M : irá imprimir 47, pois p5 recebe o endereço da posição vetor[2] que seria 27, porém foi decrementado 1 poisição, fazendo p5 apontar para posição vetor[1];
+
+  N : irá imprimir 27, pois foi realizado um incremento da posição p5, fazendo assim p5 apontar para vetor[2];
+
+--------------------------
+Questao 5:
+
+  Esta sendo criado um vetor de floats, e para printar os valores desse vetor é feito um "for", onde vai sendo acessado posição por posição do vetor. Os endereços estão sendo exibidos também, e é possivel observar que a cada incremento o valor da posição é aumentado de 4 em 4 bytes que é justamente a quantidade de bytes disponivel para armazer um float;
+ 
+--------------------------
+Questao 6:
+
+   Se pulo for um ponteiro para a posição pulo[0], a representação será: *(pulo + 2);
+
+--------------------------
+Questao 7:
+
+  As expressões p = mat e p = mat + 1, na primeira expressão p recebe a posição de p[0] e a segunda p recebe p[1];
+
+--------------------------
+Questao 8:
+
+  O primeiro programa irá imprimir todos os valores do vetor "vet". O segundo programa irá imprimir os endereços dos numeros que o vetor vet armazena;
+
+--------------------------
+Questao 9:
+
+  Este codigo não funcionará, pois "*s" não contem o endereço de nenhuma variavel valida;
+
+--------------------------
+Questao 10:
+
+  Esse codigo não funciona, pois "*x" não esta recebendo nenhum endereço valido;
+
+--------------------------
+Questao 11:
+
+  Usando a arquitetura do exemplo temos que:
+    char, x = 4092, x+1 = 4093, x+2 = 4094, x+3 = 4095;
+    int, x = 4092, x+1 = 4094, x+2 = 4096, x+3 = 4098;
+    float, x = 4092, x+1 = 4096, x+2 = 4100, x+3 = 4104;
+    double, x = 4092, x+1 = 4100, x+2 = 4108, x+3 = 4116;
+  Utilizando meu programa:
+    char, x = 0x7ffe6327859c, x+1 = 0x7ffe6327859d, x+2 = 0x7ffe6327859e, x+3 = 0x7ffe6327859f;
+    int, x = 0x7ffe63278580, x+1 = 0x7ffe63278584, x+2 = 0x7ffe63278588, x+3 = 0x7ffe6327858c
+    float, x = 0x7ffe63278570, x+1 = 0x7ffe63278574, x+2 = 0x7ffe63278578, x+3 = 0x7ffe6327857c;
+    double, x = 0x7ffe63278550, x+1 = 0x7ffe63278558, x+2 = 0x7ffe63278560, x+3 = 0x7ffe63278568;
+
+  Observando os padrões apresentados podemos perceber que para a arquitetura do exemplo temos respectivamente os valores: 1, 2, 4, 8 para cada tipo. Ja na arquitetura do meu computador temos os seguintes valores: 1, 4, 4, 8;
+
+--------------------------
+Questao 12:
+
+  Válidos: 
+    aloha[2] = value; 
+    coisas[4][4] = aloha[3];
+    pf = aloha;
+
+  Inválidos: 
+    scanf("%f", &aloha);  //O "scanf" não permite que o usuario insira um endereço
+    aloha = "value";      //Não é possivel atribuir "value" em um array de float
+    printf("%f", aloha);  //O "printf" não consegue imprimir um array inteiro 
+    coisas[5] = aloha;    //Não é possivel atribuir um array diretamente em outro
+    pf = value;           //"Pf" é um ponteiro e "value" é um float, conflito de tipos
+
+--------------------------
+Questao 13:
+
+  Memory leak (vazamento de memória) ocorre em um programa quando uma memória não é mais util e existe uma falha na desalocação dessa memoria que foi alocada dinamicamente.
+
+  1-  
+    void aloc_ptr(){
+      int *ptr = malloc(100* sizeof(int));
+    }
+    int main(){
+      aloc_ptr();
+      return 0;
+    }  
+  Nesse exemplo uma função é chamada para alocar a memoria de um ponteiro, porém não é realizada a liberação dela no escopo da função, tornando impossivel liberar essa memoria alocada 
+
+  2-
+    int main() {
+      int *ptr = malloc(1000 * sizeof(int));
+      if (1) {
+        return 0;
+      }
+      free(ptr);
+      return 0;
+    }
+  Nesse exemplo, existe um bloco que pode encerrar a execução do programa sem fazer a desalocação     
+
+  3-
+    int main() {
+      int *ptr = malloc(1000 * sizeof(int));
+      ptr = malloc(1000 * sizeof(int));
+    return 0;
+    }
+  Nesse exemplo, dois endereços foram armazenados em um unico ponteiro, logo o primeiro endereço será perdido, impossibilitando que seja liberado depois 
+
+--------------------------
+Questao 14:
+
+  O ponteiro para uma função é uma variavel que armazena o endereço de memória de uma função. Podendo assim chamar uma função por meio de um ponteiro, como no exemplo abaixo  
+
+  EXEMPLO:  
+  Chama de função com um ponteiro
+
+  void mensagem() {
+    printf("Olá, mundo!\n");
+  }   //Define uma função chamada "mensagem" que não recebe argumentos e não retorna valor, apenas imprime "Olá, mundo!" na tela.
+
+  int main() {
+    void (*ptr_mensagem)();  //Declara um ponteiro para uma função que não recebe argumentos e não retorna valor.
+    ptr_mensagem = mensagem;  //Inicializa o ponteiro com o endereço da função "mensagem"
+    ptr_mensagem(); //Chama a função através do ponteiro
+    
+    return 0;
+  }
+
+--------------------------
+Questao 15:
+  
+  #include <stdio.h>
+  #include <stdlib.h>
+
+  // Função para ordenar
+  void ordena(float *pvalores, int indice, float valor) {
+    int i = indice - 1;
+    while (i >= 0 && pvalores[i] > valor) {
+      pvalores[i + 1] = pvalores[i];
+      i--;
+    }
+    pvalores[i + 1] = valor;
+  }
+
+  int main() {
+    int n;
+    printf("Digite o número de valores float a serem inseridos:\n");
+    scanf("%d", &n);
+
+  // Aloca memória de acordo com a quantidade n (assumindo que n>0)
+  float *valores = (float *)malloc(n * sizeof(float)); 
+
+  // Leitura
+  printf("Digite %d valores float:\n", n);
+    for (int i = 0; i < n; i++) {
+      scanf("%f", &valores[i]);
+    }
+
+  // Ordena os valores
+  for (int i = 1; i < n; i++) {
+    ordena(valores, i, valores[i]);
+  }
+
+  // Escreve
+  printf("Valores em ordem crescente:\n");
+  for (int i = 0; i < n; i++) {
+    printf("%.2f\n", valores[i]);
+  }
+
+  // Libera a memória alocada
+  free(valores);
+  return 0;
+}
+  
+--------------------------
+Questao 16:
+
+  #include <stdio.h>
+  #include <stdlib.h>
+
+  // Função de comparação para usar com qsort
+  int compara(const float *a, const float *b) {
+    if (*a > *b) {
+      return 1; // Se a for MAIOR que b
+    } else if (*a < *b) {
+      return -1; // Se a for MENOR b
+    } else {
+      return 0; // Se a e b forem iguais
+    }
+  }
+
+  int main() {
+    int n;
+    printf("Digite o número de valores float a serem inseridos:\n");
+    scanf("%d", &n);
+    
+    // Aloca memória de acordo com a quantidade n (assumindo que n>0)
+    float *valores = (float *)malloc(n * sizeof(float));
+
+    // Leitura
+    printf("Digite %d valores float:\n", n);
+    for (int i = 0; i < n; i++) {
+      scanf("%f", &valores[i]);
+    }
+
+    // Ordena os valores usando qsort
+    qsort(valores, n, sizeof(float), compara); //Chama a função "qsort" passando o ponteiro que aponta para o vetor de valores, a quantidade de valores, o tamanho das variaveis armazenadas e a função compara, que verifica de dois em dois elementos qual o maior
+
+    // Escreve
+    printf("Valores em ordem crescente:\n");
+    for (int i = 0; i < n; i++) {
+      printf("%.2f\n", valores[i]);
+    }
+
+    // Libera a memória alocada
+    free(valores);
+    return 0;
+  }
+  
+--------------------------
+Questao 17:
+
+  #include <stdio.h>
+  #include <stdlib.h>
+
+  // Função de ordenação
+  void mySort(int *pvalores, int n, int (*compare)(const int *, const int *)) {
+    // Implementação de um algoritmo de ordenação
+    for (int i = 0; i < n - 1; i++) {
+      for (int j = 0; j < n - i - 1; j++) {
+        if (compare(&pvalores[j], &pvalores[j + 1]) > 0) {
+          // Troca os elementos se estiverem fora de ordem
+          int temp = pvalores[j];
+          pvalores[j] = pvalores[j + 1];
+          pvalores[j + 1] = temp;
+        }
+      }
+    }
+  }
+
+  // Função de comparação para ordenar em ordem crescente
+  int compareCrescente(const int *a, const int *b) {
+    if (*a > *b) {
+      return 1; // Se a for MAIOR que b
+    } else if (*a < *b) {
+      return -1; // Se a for MENOR b
+    } else {
+      return 0; // Se a e b forem iguais
+    }
+  }
+
+  // Função de comparação para ordenar em ordem decrescente
+  int compareDecrescente(const int *a, const int *b) {
+    if (*a < *b) {
+      return 1; // Se a for MAIOR que b
+    } else if (*a > *b) {
+      return -1; // Se a for MENOR b
+    } else {
+      return 0; // Se a e b forem iguais
+    }
+  }
+
+  int main() {
+    int n;
+    printf("Digite o número de valores int a serem inseridos:\n");
+    scanf("%d", &n);
+    // Aloca memória de acordo com a quantidade n (assumindo que n>0)
+    int *valores = (int *)malloc(n * sizeof(int));
+
+    // Leitura
+    printf("Digite %d valores int:\n", n);
+    for (int i = 0; i < n; i++) {
+      scanf("%d", &valores[i]);
+    }
+
+    // Ordenação em ordem crescente
+    printf("Ordenação em ordem crescente:\n");
+    mySort(valores, n, compareCrescente);
+    for (int i = 0; i < n; i++) {
+      printf("%d ", valores[i]);
+    }
+    printf("\n");
+
+    // Ordenação em ordem decrescente
+    printf("Ordenação em ordem decrescente:\n");
+    mySort(valores, n, compareDecrescente);
+    for (int i = 0; i < n; i++) {
+      printf("%d ", valores[i]);
+    }
+    printf("\n");
+
+    // Libera a memória alocada
+    free(valores);
+    return 0;
+  }
+--------------------------
+Questao 18:
+
+  Realizando a medição de tempo de execução para os três tipos de mecanismos (sem qsort, com qsort e criando minha propria função qsort) foi possivel perceber que o primeiro metodo é o mais lento. Os outros dois possuem tempos parecidos, porém, com o qsort foi mais rapido usando poucos valores para ordenar (até 5), ja o myQsort da questão anterior consegue ser bem mais rapido para maiores quantidades de numeros para ordenar.
+
+  Para calcular o tempo foi utilizada a biblioteca timer.h, onde iniciavamos a contagem, realizavamos a chamada da função e quando a função terminava, capturavamos o tempo final, fazendo a diferença era possivel obter o tempo de execução de cada função.
+
+--------------------------
+Questao 19:
+
+  #include <stdio.h>
+  #include <stdlib.h>
+
+  //Faz a soma dos vetores
+  void soma_vetor(int *vet1, int *vet2, int *resultado, int n){ 
+    for(int i=0; i<n; i++){
+      resultado[i] = vet1[i] + vet2[i];
+    }  
+  }
+
+  int main(void) {
+    int n;
+    int *vetA, *vetB, *resultado;
+
+    printf("Digite o tamanho do vetor: ");
+    scanf("%d", &n);
+
+    //Aloca dinamicamente a memoria
+    vetA = malloc(n * sizeof(int));
+    vetB = malloc(n * sizeof(int));
+    resultado = malloc(n * sizeof(int));
+
+    //Leitura dos vetores A e B
+    printf("Digite os valores do vetor A: \n");
+    for(int i=0; i<n; i++){
+      scanf("%d", &vetA[i]);
+    }
+    printf("Digite os valores do vetor B: \n");
+    for(int i=0; i<n; i++){
+      scanf("%d", &vetB[i]);
+    }
+
+    soma_vetor(vetA, vetB, resultado, n);
+
+    //Escreve o resultado da soma
+    printf("Resultado de A + B: \n");
+    for(int i=0; i<n; i++){
+      printf("%d ", resultado[i]);
+    }
+  
+    //Libera a memoria
+    free(vetA);
+    free(vetB);
+    free(resultado);
+  
+    return 0;
+  }
+
+--------------------------
+Questao 20:
+
+  #include <stdio.h>
+  #include <stdlib.h>
+
+  // Faz a multiplicação matricial
+  void multi_matriz(int **matA, int **matB, int **resultado, int nlA, int ncA, int ncB) {
+    for (int i = 0; i < nlA; i++) {
+      printf(" i: %d", i);
+      for (int j = 0; j < ncB; j++) {
+        printf(" j: %d", j);
+        resultado[i][j] = 0; // Inicializa cada elemento da matriz resultado como 0
+        for (int k = 0; k < ncA; k++) {
+          printf(" k: %d", k);
+          resultado[i][j] += matA[i][k] * matB[k][j];
+        }
+      }
+    }
+  }
+
+  int main(void) {
+    int nlA, ncA, ncB;
+    int **matA, **matB, **resultado;
+
+    printf("Digite o numero de colunas da matriz A: ");
+    scanf("%d", &ncA);
+    printf("Digite o numero de linhas da matriz A: ");
+    scanf("%d", &nlA);
+    printf("Digite o numero de colunas da matriz B: ");
+    scanf("%d", &ncB);
+
+    // Aloca dinamicamente a memoria
+    matA = (int **)malloc(nlA * sizeof(int));
+    matB = (int **)malloc(ncA * sizeof(int));
+    resultado = (int **)malloc(nlA * sizeof(int));
+
+    for (int i = 0; i < nlA; i++) {
+      matA[i] = (int *)malloc(ncA * sizeof(int));
+    }
+    for (int i = 0; i < ncA; i++) {
+      matB[i] = (int *)malloc(ncB * sizeof(int));
+    }
+    for (int i = 0; i < ncA; i++) {
+      resultado[i] = (int *)malloc(ncB * sizeof(int));
+    }
+
+    // Leitura das matrizes
+    printf("Digite os valores da matriz A: ");
+    for (int i = 0; i < nlA; i++) {
+      for (int j = 0; j < ncA; j++) {
+        scanf("%d", &matA[i][j]);
+      }
+    }
+    printf("Digite os valores da matriz B: ");
+    for (int i = 0; i < ncA; i++) {
+      for (int j = 0; j < ncB; j++) {
+        scanf("%d", &matB[i][j]);
+      }
+    }
+
+    multi_matriz(matA, matB, resultado, nlA, ncA, ncB);
+
+    // Escreve A
+    printf("Matriz A: \n");
+    for (int i = 0; i < nlA; i++) {
+      for (int j = 0; j < ncA; j++) {
+        printf("%d ", matA[i][j]);
+      }
+      printf("\n");
+    }
+    printf("\n");
+
+    // Escreve B
+    printf("Matriz B: \n");
+    for (int i = 0; i < ncA; i++) {
+      for (int j = 0; j < ncB; j++) {
+        printf("%d ", matB[i][j]);
+      }
+      printf("\n");
+    }
+    printf("\n");
+
+    // Escreve o resultado da multiplicação
+    printf("Resultado de A * B: \n");
+    for (int i = 0; i < nlA; i++) {
+      for (int j = 0; j < ncB; j++) {
+        printf("%d ", resultado[i][j]);
+      }
+      printf("\n");
+    }
+
+    // Libera a memoria
+    free(matA);
+    free(matB);
+    free(resultado);
+
+    return 0;
+  }
+
+--------------------------
+Questao 21:
+
+  Letra C, pois, existe um bloco que pode encerrar a execução do programa sem fazer a desalocação;
+
+--------------------------
+Questao 22:
+
+  Operadores utilizados & -> AND, operador | OR
+  No primeiro laço while será armazenado na variavel x o resultado da 
+
+  Logo os resultados para x, y, z, são respectivamente, 15, 13, 0;  
+
+--------------------------
+Questao 23:
+
+  Apenas a primeira afirmação, pois, como o valor 15 esta no setimo indice ambas as funções retornarão a mesma posição.
+  A segunda afirmação esta errada, pois, no pior caso a função1 usa uma busca linear, ja no pior caso a função2 usa uma busca binária, tornando a função2 é mais rapida que a função1.
+  A terceira afirmação esta errada, pois, ela é uma estratágia de divisão e conquista;
+
+--------------------------
+Questao 24:
+
+  #include <stdio.h>
+#include <stdint.h>
+
+// Função para enviar o estado via porta serial
+void porta_serial(int64_t estado) {
+    printf("Estado enviado via porta serial: %lu\n", estado);
+}
+
+int main() {
+    // Definindo a matriz de leds
+    unsigned char m[8][8] = {
+        {1, 0, 1, 0, 1, 0, 1, 0},
+        {0, 1, 0, 1, 0, 1, 0, 1},
+        {1, 0, 1, 0, 1, 0, 1, 0},
+        {0, 1, 0, 1, 0, 1, 0, 1},
+        {1, 0, 1, 0, 1, 0, 1, 0},
+        {0, 1, 0, 1, 0, 1, 0, 1},
+        {1, 0, 1, 0, 1, 0, 1, 0},
+        {0, 1, 0, 1, 0, 1, 0, 1}
+    };
+
+    // Variável para armazenar o estado a ser enviado via porta serial
+    int64_t estado = 0;
+
+    // Codificando a matriz de leds na variável de 64 bits
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            // Desloca o bit correspondente na variável de estado
+            estado |= (int64_t)m[i][j] << (i * 8 + j);
+        }
+    }
+
+    // Enviando o estado via porta serial
+  porta_serial(estado);
+
+    return 0;
+}  
+
+--------------------------
+Questao 25:
+
+  #include <stdio.h>
+#include <stdlib.h>
+
+// Função para alocar uma matriz tridimensional
+int*** alocaMatriz(int altura, int largura, int profundidade) {
+  int ***matriz;
+  int i, j;
+
+  // Aloca a matriz tridimensional
+  matriz = (int***)malloc(altura * sizeof(int**));
+  for (i = 0; i < altura; i++) {    
+    matriz[i] = (int**)malloc(largura * sizeof(int*));
+    for (j = 0; j < largura; j++) {
+      matriz[i][j] = (int*)malloc(profundidade * sizeof(int));
+    }
+  }
+  return matriz;
+}
+
+// Função para liberar a memória alocada para a matriz
+void liberaMatriz(int*** matriz, int altura, int largura) {
+  int i, j;
+  for (i = 0; i < altura; i++) {
+    for (j = 0; j < largura; j++) {
+      free(matriz[i][j]);
+    }
+    free(matriz[i]);
+  }
+  free(matriz);
+}
+
+// Função para imprimir um plano da matriz tridimensional
+void imprimePlano(int*** matriz, int altura, int largura, int profundidade, int plano) {
+  int i, j;
+  printf("Plano %d da matriz tridimensional:\n", plano);
+  for (i = 0; i < altura; i++) {
+    for (j = 0; j < largura; j++) {
+      printf("%d ", matriz[i][j][plano]);
+    }
+    printf("\n");
+  }
+}
+
+// Função para modificar o estado de um elemento da matriz
+void modificaElemento(int*** matriz, int altura, int largura, int profundidade, int x, int y, int z, int valor) {
+    matriz[x][y][z] = valor;
+}
+
+int main() {
+  int altura, largura, profundidade;
+  int*** matriz;
+  int x, y, z;
+  int escolha;
+
+  // Solicita ao usuário as dimensões da matriz tridimensional
+  printf("Digite a altura da matriz tridimensional: ");
+  scanf("%d", &altura);
+  printf("Digite a largura da matriz tridimensional: ");
+  scanf("%d", &largura);
+  printf("Digite a profundidade da matriz tridimensional: ");
+  scanf("%d", &profundidade);
+
+  // Aloca a matriz tridimensional
+  matriz = alocaMatriz(altura, largura, profundidade);
+
+  // Menu de operações
+  while (1) {
+    printf("\nMenu:\n");
+    printf("1. Imprimir um plano da matriz\n");
+    printf("2. Modificar o estado de um elemento da matriz\n");
+    printf("3. Sair\n");
+    printf("Escolha a operacao: ");
+    scanf("%d", &escolha);
+
+    switch (escolha) {
+      case 1:
+        printf("Digite o plano que deseja imprimir (0 a %d): ", profundidade - 1);
+        scanf("%d", &z);
+        if (z >= 0 && z < profundidade) {
+          imprimePlano(matriz, altura, largura, profundidade, z);
+        } else {
+          printf("Plano invalido.\n");
+        }
+        break;
+      case 2:
+        printf("Digite as coordenadas do elemento que deseja modificar (x y z): ");
+        scanf("%d %d %d", &x, &y, &z);
+        if (x >= 0 && x < altura && y >= 0 && y < largura && z >= 0 && z < profundidade) {
+          printf("Digite o novo valor (0 ou 1): ");
+          scanf("%d", &escolha);
+          if (escolha == 0 || escolha == 1) {
+            modificaElemento(matriz, altura, largura, profundidade, x, y, z, escolha);
+            printf("Elemento modificado com sucesso.\n");
+          } else {
+            printf("Valor invalido. O valor deve ser 0 ou 1.\n");
+          }
+        } else {
+          printf("Coordenadas invalidas.\n");
+        }
+        break;
+      case 3:
+        // Libera a memória alocada para a matriz
+        liberaMatriz(matriz, altura, largura);
+        printf("Programa encerrado.\n");
+        return 0;
+      default:
+        printf("Opcao invalida.\n");
+    }
+  }
+    return 0;
+}  
+
+--------------------------
