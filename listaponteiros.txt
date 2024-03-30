@@ -350,10 +350,13 @@ Questao 17:
     free(valores);
     return 0;
   }
+
+  Observe que a ideia de ponteiro para uma função foi implementada no argumento da funcao "mySort", onde possui um ponteiro que ira apontar dinamicamente para a funcao de ordenacao crescente ou decrescente.
+
 --------------------------
 Questao 18:
 
-  Realizando a medição de tempo de execução para os três tipos de mecanismos (sem qsort, com qsort e criando minha propria função qsort) foi possivel perceber que o primeiro metodo é o mais lento. Os outros dois possuem tempos parecidos, porém, com o qsort foi mais rapido usando poucos valores para ordenar (até 5), ja o myQsort da questão anterior consegue ser bem mais rapido para maiores quantidades de numeros para ordenar.
+  Realizando a medicao de tempo de execucao para os trs tipos de mecanismos (sem qsort, com qsort e criando minha propria função qsort) foi possivel perceber que o primeiro metodo é o mais lento. Os outros dois possuem tempos parecidos, porém, com o qsort foi mais rapido usando poucos valores para ordenar (até 5), ja o myQsort da questão anterior consegue ser bem mais rapido para maiores quantidades de numeros para ordenar.
 
   Para calcular o tempo foi utilizada a biblioteca timer.h, onde iniciavamos a contagem, realizavamos a chamada da função e quando a função terminava, capturavamos o tempo final, fazendo a diferença era possivel obter o tempo de execução de cada função.
 
@@ -516,8 +519,40 @@ Questao 21:
 --------------------------
 Questao 22:
 
-  Operadores utilizados & -> AND, operador | OR
-  No primeiro laço while será armazenado na variavel x o resultado da 
+  Operadores utilizados & (AND), operador | (OR) e ^ (XOR).
+
+  Primeira iteração do loop: (a = 10, b = 1)
+    x = 10 (binário: 1010), y = 1 (binário: 0001), z = 11 (binário 1011).
+    x = 10 | 1 => 1010 | 0001 = 1011 (11)
+    y = 1 ^ 10 => 0001 ^ 1010 = 1011 (11)
+    z = 11 & 11 => 1011 & 1011 = 1011 (11)
+
+    a é deslocado para a direita 0101 (5)
+    b é deslocado para a esquerda 0010 (2).
+
+  Segunda iteração do loop: (a = 5, b = 2)
+   x = 11 | 2 => 1011 | 0010 = 1011 (11)
+   y = 11 ^ 5 => 1011 ^ 0101 = 1110 (14)
+   z = 11 & 7 => 1011 & 0111 = 0011 (3)
+
+   a é deslocado para a direita 0010 (2)
+   b é deslocado para a esquerda 0100 (4)
+    
+  Terceira iteração do loop: (a = 2, b = 5)
+   x = 11 | 5 => 1011 | 0101 = 1111 (15)
+   y = 13 ^ 2 => 1110 ^ 0010 = 1100 (12)
+   z = 3 & 6 => 0011 & 0110 = 0010 (2)
+
+   a é deslocado para a direita 0001 (1)
+   b é deslocado para a esquerda 1000 (8)
+
+  Quarta iteração do loop: (a = 1, b = 8)
+   x = 15 | 8 => 1111 | 1000 = 1111 (15)
+   y = 12 ^ 1 => 1100 ^ 0001 = 1101 (13)
+   z = 2 & 9 => 0010 & 1001 = 0000 (0)
+
+   a é deslocado para a direita 0000 (0)
+   b é deslocado para a esquerda 0000 (0)
 
   Logo os resultados para x, y, z, são respectivamente, 15, 13, 0;  
 
@@ -531,48 +566,12 @@ Questao 23:
 --------------------------
 Questao 24:
 
-  #include <stdio.h>
-#include <stdint.h>
-
-// Função para enviar o estado via porta serial
-void porta_serial(int64_t estado) {
-    printf("Estado enviado via porta serial: %lu\n", estado);
-}
-
-int main() {
-    // Definindo a matriz de leds
-    unsigned char m[8][8] = {
-        {1, 0, 1, 0, 1, 0, 1, 0},
-        {0, 1, 0, 1, 0, 1, 0, 1},
-        {1, 0, 1, 0, 1, 0, 1, 0},
-        {0, 1, 0, 1, 0, 1, 0, 1},
-        {1, 0, 1, 0, 1, 0, 1, 0},
-        {0, 1, 0, 1, 0, 1, 0, 1},
-        {1, 0, 1, 0, 1, 0, 1, 0},
-        {0, 1, 0, 1, 0, 1, 0, 1}
-    };
-
-    // Variável para armazenar o estado a ser enviado via porta serial
-    int64_t estado = 0;
-
-    // Codificando a matriz de leds na variável de 64 bits
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            // Desloca o bit correspondente na variável de estado
-            estado |= (int64_t)m[i][j] << (i * 8 + j);
-        }
-    }
-
-    // Enviando o estado via porta serial
-  porta_serial(estado);
-
-    return 0;
-}  
+  
 
 --------------------------
 Questao 25:
 
-  #include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 // Função para alocar uma matriz tridimensional
